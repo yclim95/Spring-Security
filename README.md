@@ -1,4 +1,4 @@
-# Spring & JPA
+# Spring & Security
 
 ## RESOURCE
 1. [Spring Basic](https://github.com/yclim95/spring-basic)
