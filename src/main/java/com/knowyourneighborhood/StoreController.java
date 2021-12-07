@@ -34,12 +34,14 @@ public class StoreController {
 	}
 	
 	@GetMapping("/registerStore")
-	public String getRegisterStore(Map<String, Object> model) {
+	public ModelAndView getRegisterStore(Map<String, Object> model) {
 		// For later form Posting Purpose
 		Store store = new Store();
 		model.put("store", store);
-		return "store-register";
+		ModelAndView mav = new ModelAndView("store-register");
+		return mav;
 	}
+	
 	
 	@PostMapping(value = "/save")
 	public String saveStore(@ModelAttribute("store") Store store) {

@@ -1,17 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>     
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+<%@ page language="java" contentType="text/html;
+charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Know Your Neighbourhood | New Store</title>
+<meta http-equiv="Content-Type" content="text/html;
+charset=ISO-8859-1">
+<title>Know Your Neighbourhood | New Store </title>
 </head>
 <body>
 	<div align="center">
-		<h2>New Store</h2>
+		
 		<sec:authorize access="hasRole('ADD_STORE')">
+		<h2>New Store</h2>
 			<form:form action="save" method="post" modelAttribute="store">
 				 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<table border="0" cellpadding="5">

@@ -2,10 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>Know Your Neighbourhood | Login</title>
 </head>
 <body>
@@ -21,12 +21,12 @@
 	    <form action="${post_url}" method="post">
 	    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	    <p>
-	      <label for="username">User:</label>
+	      <label for="email">Email</label>
 	      <input type="text" name="username" id="username" value=""></input>
 	    </p>
 	    <p>
 	      <label for="password">Password:</label>
-	      <input type="text" name="password" id="password" value=""></input>
+	      <input type="password" name="password" id="password" value=""></input>
 	    </p>
 	      <input type="submit" name="Login" value="Login"></input>
 	    </form>

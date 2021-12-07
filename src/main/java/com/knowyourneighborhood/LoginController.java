@@ -16,6 +16,7 @@ public class LoginController {
     public String onLoginError(Model model) {
         String error_msg = "Incorrect user or password. Please re-enter.";
         model.addAttribute("error_string", error_msg);
+        System.out.println(error_msg);
         return "login";
     }
 }

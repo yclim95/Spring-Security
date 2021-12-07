@@ -3,6 +3,7 @@ charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +18,24 @@ charset=ISO-8859-1">
 	        <p> ${error_message} </p>
 	    </c:if>
 
-	    <c:if test="${empty stores}">
+	    <c:if test="${empty listStore}">
 	        <sec:authorize access="hasRole('VIEW_STORE')">
 	            <span> No stores are added yet. </span>
-	        </sec:authorize>
-	        <sec:authorize access="hasRole('ADD_STORE')">
 	            <span> Please click on "New Store "to add stores to the system. </span>
+	        </sec:authorize>
+	      </c:if> 
+	        <sec:authorize access="hasRole('ADD_STORE')">
            		<h3>
 					<a href="registerStore">New Store</a>
 				</h3>
 	        </sec:authorize>
-	    </c:if>
+	   
 		<form method="get" action="search">
 			<input type="text" name="keyword" /> &nbsp; <input type="submit"
 				value="Search" />
 		</form>
 		
-		<c:if test="${not empty stores}">
+		<c:if test="${not empty listStore}">
 			<table border="1" cellpadding="5">
 				<tr>
 					<th>ID</th>
@@ -47,12 +49,21 @@ charset=ISO-8859-1">
 						<td>${store.name}</td>
 						<td>${store.phoneNumber}</td>
 						<td>${store.localities}</td>
-						<td><a href="edit?id=${store.storeID}">Edit</a> &nbsp;&nbsp;&nbsp;
-							<a href="delete?id=${store.storeID}">Delete</a></td>
+						<sec:authorize access="hasRole('ADD_STORE')">
+							<td><a href="edit?id=${store.storeID}">Edit</a> &nbsp;&nbsp;&nbsp;
+								<a href="delete?id=${store.storeID}">Delete</a>
+							</td>
+						</sec:authorize>
 					</tr>
 				</c:forEach>
 			</table>
 		</c:if>
+		
+		<form action="logout" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" name="Logout" value="Logout"></input>
+    </form>
+    
 	</div>
 </body>
 </html>
