@@ -9,7 +9,9 @@ import com.knowyourneighborhood.model.Store;
 
 @Service
 public class StoreService {
-	@Autowired StoreRepository repo;
+	@Autowired
+	StoreRepository repo;
+	
 	public void save(Store store) {
 		repo.save(store);
 	}
@@ -25,5 +27,4 @@ public class StoreService {
 	public List<Store> search(String keyword) {
 		return repo.search(keyword);
 	}
-	
 }
