@@ -16,6 +16,7 @@ import com.knowyourneighborhood.auth.UserDetailsServiceImpl;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
@@ -26,12 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
+    
     // Authentication
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     	System.out.println("At Authen configure");
         auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
+        
     
 	// Authorization
     @Override

@@ -36,11 +36,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         String[] roleNames= user.getRoles().stream().map(Role::getRoleType).toArray(String[]::new);
         
         System.out.println("Role Name is "+roleNames);
-        
-        return userBuilder.username(user.getEmail())
+        return userBuilder.username(user.getEmail()) 
                         .password(user.getPassword())
                         .roles(roleNames)
-                        .passwordEncoder(passwordEncoder::encode)
                         .build();
+        // System.out.println("Login password" +user.getPassword());
+        // System.out.println("comapre: " + passwordEncoder.matches("john123456", user.getPassword()));
+        // System.out.println("User details "+loginuser.toString());
     }
 }
