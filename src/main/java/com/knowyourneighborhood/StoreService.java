@@ -15,6 +15,10 @@ public class StoreService {
 	public void save(Store store) {
 		repo.save(store);
 	}
+	public Store saveStore(Store store) {
+		Store savedStore = repo.save(store);
+		return savedStore;
+	}
 	public List<Store> listAll() {
 		return (List<Store>) repo.findAll();
 	}

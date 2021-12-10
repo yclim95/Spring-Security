@@ -15,7 +15,10 @@ charset=ISO-8859-1">
 	<div align="center">
 		<h2>Store Manager</h2>
 	    <c:if test="${not empty error_message}">
-	        <p> ${error_message} </p>
+	        <p style = "color:red"> ${error_message} </p>
+	    </c:if>
+   	    <c:if test="${not empty error_url_message}">
+	        <p style = "color:red"> ${error_url_message} </p>
 	    </c:if>
 
 	    <c:if test="${empty listStore}">
@@ -29,6 +32,7 @@ charset=ISO-8859-1">
 					<a href="registerStore">New Store</a>
 				</h3>
 	        </sec:authorize>
+	        
 	   
 		<form method="get" action="search">
 			<input type="text" name="keyword" /> &nbsp; <input type="submit"
