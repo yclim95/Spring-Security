@@ -50,7 +50,7 @@ public class AppTest {
 	@WithMockUser(username = "Maven", roles = {"ADD_STORE"})
 	public void testAddStoreMapping() throws Exception {
 		this.mockMvc
-			.perform(MockMvcRequestBuilders.post("/registerStore")
+			.perform(MockMvcRequestBuilders.get("/registerStore")
 				.param("name", "Starbucks")
 				.param("phoneNumber","01234567")
 				.param("localities","Malaysia")
